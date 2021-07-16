@@ -20,7 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\RegisterController@login');
 Route::post('logout','API\RegisterController@logout')->middleware('auth:api');
-Route::post('password/email', 'ForgotPasswordController@forgotPassword')->middleware('auth:api');
-Route::post('password/reset', 'ForgotPasswordController@resetPassword')->middleware('auth:api');
+Route::post('password/email', 'API\ForgotPasswordController@sendResetLinkEmail')->middleware('auth:api');
+Route::post('password/reset', 'API\ResetPasswordController@reset')->middleware('auth:api');
+Route::get('email/resend', 'API\VerificationController@resend')->name('verefication.resend');
+Route::get('email/verefy/{id}/{hash}', 'API\VerificationController@verefy')->name('verefication.verefy');
+
 
 
