@@ -102,12 +102,18 @@ class CapsuleController extends Controller
 
         // Return the response
         return response()->json([
-            'today' => $reportDays['sumOfThisDay'],
-            'yesterday' => $reportDays['sumOfLastDay'],
-            'this week' => $reportWeeks['sumOfThisWeek'],
-            'last week' => $reportWeeks['sumOfLastWeek'],
-            'this month' => $reportMonths['sumOfThisMonth'],
-            'last month' => $reportMonths['sumOfLastMonth'],
+            'days' => [
+                'today' => $reportDays['sumOfThisDay'],
+                'yesterday' => $reportDays['sumOfLastDay'],
+            ],
+            'weeks' => [
+                'this week' => $reportWeeks['sumOfThisWeek'],
+                'last week' => $reportWeeks['sumOfLastWeek'],
+            ],
+            'months' => [
+                'this month' => $reportMonths['sumOfThisMonth'],
+                'last month' => $reportMonths['sumOfLastMonth'],
+            ],
         ], 200);
     }
 
