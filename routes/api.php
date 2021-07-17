@@ -26,5 +26,11 @@ Route::post('password/reset', 'API\ResetPasswordController@reset')->middleware('
 Route::get('email/resend', 'API\VerificationController@resend')->name('verefication.resend');
 Route::get('email/verefy/{id}/{hash}', 'API\VerificationController@verefy')->name('verefication.verefy');
 
+// Capsule Routes
+Route::prefix('capsules')->namespace('API')->middleware('auth:api')->group(function () {
+    Route::post('increase', 'CapsuleController@capsulesIncrease');
+    Route::get('report', 'CapsuleController@capsulesReport');
+});
+
 
 
