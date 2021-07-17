@@ -45,4 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new PasswordResetNotification($token));
     }
+
+    // Get capsules count that belong to the user
+    public function capsules()
+    {
+        return $this->hasMany(Capsule::class, 'user_id');
+    }
 }
